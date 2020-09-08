@@ -1,0 +1,150 @@
+
+body{
+    background-color: #151515;
+}
+
+.navBar{
+    background-color: crimson;
+    padding: 0.5rem;
+    text-align: left;
+    color: #FFF;
+    font-weight: 700;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo{
+    /* background-color: red; */
+}
+
+.navImgLogo{
+    max-height: 32px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.Search{
+    display: flex;
+    flex-flow: row nowrap;
+    /* background-color: green; */
+    min-width: 300px;
+    width: 300px;
+    max-width: 500px;
+}
+
+#txtSearch{
+    background-color: #24242C;
+    color: #FFF;
+    border: 0;
+    border-radius: 5px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    padding: 0.7rem;
+    min-width: 200px;
+    margin: 0px 0px 0px 10px;
+}
+
+#btnSearch{
+    background-color: #424242;
+    color: #FFF;
+    border: 0;
+    border-radius: 5px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    cursor: pointer;
+    width: 40px;
+}
+
+#txtSearch:focus, #btnSearch:focus{
+    outline: 0;
+}
+
+#btnSearch:hover, #btnSearch:active{
+    background-color: #212121;
+}
+
+
+/* Main */
+.container{
+    color: #FFF;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    justify-items: flex-start;
+}
+
+.card{
+    margin: 10px;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.mainCard{
+    min-width: 650px;
+    background-color: #373737;
+    text-align: center;
+}
+
+.selectCard h1{
+    min-height: 5.5rem;
+}
+
+.selectCard img{
+    max-width: 200px;
+    border-radius: 50%;
+}
+
+.selectCard{
+    min-width: 300px;
+    max-width: 300px;
+    background-color: #0078A7;
+    text-align: center;
+    padding-top: 3rem;
+    overflow: hidden;
+    min-height: 70vh;
+}
+
+.selectInfo{
+    min-width: 100%;
+    background-color: #233460;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 1rem;
+    height: 41.5%;
+    margin-bottom: 10px;
+}
+
+.selectInfo h2{
+    margin: 5px;
+    margin-top: 10px;
+}
+
+.selectInfo p{
+    margin: 0;
+    margin-bottom: 20px;
+}
+
+.btnChangePerson{
+    background-color: #212121;
+    padding: 1rem;
+    color: #FFF;
+    border: 0;
+    cursor: pointer;
+    outline: 0;
+}
+
+.btnChangePerson:hover, .btnChangePerson:active{
+    background-color: crimson;
+}
+
+.right{
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.left{
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
