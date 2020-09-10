@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import BarSearch from './busqueda';
 import logo from '../assets/img/logo.png';
 
 class HeaderComponent extends Component{
@@ -7,13 +8,10 @@ class HeaderComponent extends Component{
             <>  
                 <nav className="navBar">
                     <div className="logo">
-                        <img src={logo} className="navImgLogo"></img>
+                        <img src={logo} className="navImgLogo"alt=""></img>
                     </div>
                     <div className="Search">
-                        <input id="txtSearch" placeholder="Buscar"></input>
-                        <button id="btnSearch">
-                            <i className='fas fa-search'> </i>
-                        </button>
+                        <BarSearch/>
                     </div>
                 </nav>
             </>

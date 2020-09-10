@@ -1,4 +1,5 @@
-import React, {useEffect, useState, Component} from 'react'
+import React, {useEffect, useState} from 'react'
+import  FiveFirst from './FiveFirst.jsx'
 
 const ContentComponent = () => {
 
@@ -6,21 +7,25 @@ const ContentComponent = () => {
     const [personaje, setPersonaje] = useState([]);
     
     useEffect(()=>{
-        obtenerPersonajes()
+        obtenerPersonajes(id)
     }, [id]);
 
     function cambiarUp(){
         setId(id + 1)
-        obtenerPersonajes()
+        obtenerPersonajes(id)
     }
 
 
         function cambiarDown(){
-            setId(id - 1);
-            obtenerPersonajes()
+            if(id > 1){
+                setId(id - 1);
+                obtenerPersonajes(id)
+            }else{
+                obtenerPersonajes(id)
+            }
     }
     
-        const obtenerPersonajes = async () => {
+        const obtenerPersonajes = async (id) => {
         
         const datos = await fetch('https://rickandmortyapi.com/api/character/' + id)
         const datosPersonaje = await datos.json()
@@ -34,18 +39,19 @@ const ContentComponent = () => {
         <>
         <div className="container">           
             <div className="card mainCard">
-                </div>
+                <FiveFirst/>
+            </div>
         
             <div className="card selectCard">
-                <img src={personaje.image}></img>
+                <img src={personaje.image} alt=""></img>
                 <h1>{personaje.name}</h1>
                 <div className="selectInfo">
-                    <h2>Especie</h2>
-                        <p>{personaje.species}</p>
-                    <h2>Genero</h2>
-                        <p>{personaje.gender}</p>
-                    <h2>Estado</h2>
-                        <p>{personaje.status}</p>
+                    <h2>{personaje.species}</h2>
+                        <p>Especie</p>
+                    <h2>{personaje.gender}</h2>
+                        <p>Genero</p>
+                    <h2>{personaje.status}</h2>
+                        <p>Estado</p>
                 <button onClick={cambiarDown} className="btnChangePerson left">
                     <i className='fas fa-arrow-left'></i>
                 </button>
@@ -53,6 +59,7 @@ const ContentComponent = () => {
                     <i className='fas fa-arrow-right'></i>
                 </button>
                 </div>
+                    <i className='far like fa-thumbs-up'></i>
             </div>
 
         </div>

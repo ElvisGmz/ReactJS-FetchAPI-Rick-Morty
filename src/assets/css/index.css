@@ -15,10 +15,6 @@ body{
     justify-content: space-between;
 }
 
-.logo{
-    /* background-color: red; */
-}
-
 .navImgLogo{
     max-height: 32px;
     margin: 0px;
@@ -65,6 +61,25 @@ body{
     background-color: #212121;
 }
 
+/* FivePrincipals */
+.cards{
+    min-width: 170px;
+    background-color: crimson;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.cards h2, .cards p{
+    margin: 0;
+    padding: 0;
+}
+
+.fiveImg{
+    max-width: 140px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
 
 /* Main */
 .container{
@@ -73,18 +88,25 @@ body{
     flex-flow: row wrap;
     justify-content: center;
     justify-items: flex-start;
+    align-items: flex-start;
 }
 
 .card{
     margin: 10px;
     padding: 10px;
     border-radius: 5px;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .mainCard{
     min-width: 650px;
+    max-width: 650px;
+    height: auto;
     background-color: #373737;
     text-align: center;
+    display: flex;
+    flex-flow: row wrap;
 }
 
 .selectCard h1{
@@ -112,13 +134,20 @@ body{
     border-radius: 5px;
     text-align: center;
     padding-top: 1rem;
-    height: 41.5%;
-    margin-bottom: 10px;
+    height: 270px !important;
+    margin-bottom: 25px;
 }
 
 .selectInfo h2{
     margin: 5px;
     margin-top: 10px;
+}
+
+.like{
+    margin-top: -80px;
+    right: 40px !important;
+    position: absolute;
+    font-size: 36px;
 }
 
 .selectInfo p{
@@ -147,4 +176,156 @@ body{
 .left{
     border-top-left-radius: 5px;
     border-bottom-left-radius: 5px;
+}
+
+
+
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1030px) {
+
+    /* Main */
+
+    .container{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .mainCard{
+        min-width: 300px;
+        max-width: 640px;
+        background-color: #373737;
+        text-align: center;
+    }
+
+    
+}
+
+
+@media only screen and (max-width: 1020px) {
+
+    /* Main */
+
+    .container{
+        flex-direction: row;
+        align-items: flex-start;
+    }
+
+    .mainCard{
+        min-width: 300px;
+        max-width: 640px;
+        background-color: #373737;
+        text-align: center;
+    }
+
+    
+}
+
+
+@media only screen and (max-width: 768px) {
+
+    /* Main */
+
+    .container{
+        flex-direction: column-reverse;
+        align-items: center;
+    }
+
+    .mainCard{
+        min-width: 300px;
+        background-color: #373737;
+        text-align: center;
+    }
+
+    
+
+.selectCard{
+    min-width: 93vw;
+    max-width: 470px !important;
+    background-color: #0078A7;
+    text-align: center;
+    padding-top: 3rem;
+    overflow: hidden;
+    min-height: 70vh;
+}
+    
+}
+
+@media only screen and (max-width: 450px) {
+    
+
+    
+/* FivePrincipals */
+.cards{
+    min-width: 74vw;
+    background-color: crimson;
+    padding: 2rem 1rem;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+    .container{
+        flex-direction: column-reverse !important;
+        align-items: center;
+    }
+
+    .navBar{
+        background-color: crimson;
+        padding: 0.5rem;
+        text-align: right;
+        color: #FFF;
+        font-weight: 700;
+        font-size: 24px;
+        display: flex;
+        align-items: center;
+        justify-content: center !important;
+        flex-flow: nowrap column;
+    }
+
+    .Search{
+        display: flex;
+        flex-flow: row nowrap;
+        /* background-color: green; */
+        min-width: 95vw !important;
+        margin: auto;
+        justify-content: center;
+        justify-items: center;
+    }
+
+    #txtSearch{
+        background-color: #24242C;
+        color: #FFF;
+        border: 0;
+        border-radius: 5px;
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 0px;
+        padding: 0.7rem;
+        min-width: 70%;
+        margin: 0px 0px 0px 0px;
+    }
+    
+
+    /* Main */
+    .mainCard{
+        min-width: 280px;
+        background-color: #373737;
+        text-align: center;
+    }
+
+    .selectCard{
+        min-width: 87vw;
+        max-width: 280px;
+        background-color: #0078A7;
+        text-align: center;
+        padding-top: 3rem;
+        overflow: hidden;
+        min-height: 70vh;
+    }
+    
 }
