@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 
 const BarSearch = ({ id={}, setId={ }})=>{
-    const [busqueda, setBusqueda] = useState("")
+    let [busqueda, setBusqueda] = useState("")
     const [items,setItems] = useState([])
 
     useEffect(()=>{
@@ -25,7 +25,7 @@ const BarSearch = ({ id={}, setId={ }})=>{
 
     const handleClick = (e) => {
         setId(e.target.value)
-        setBusqueda('')
+        setBusqueda = ''
       }
 
     return(

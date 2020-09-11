@@ -2,7 +2,7 @@ import React from 'react';
 import BarSearch from './busqueda';
 import logo from '../assets/img/logo.png';
 
-const HeaderComponent = ({ id={}, setId={ }})=>{
+const HeaderComponent = ({ id={}, setId={}})=>{
 
     return(
         <>  

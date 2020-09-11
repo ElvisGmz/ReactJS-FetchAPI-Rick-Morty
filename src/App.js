@@ -11,7 +11,6 @@ function App() {
     <div className="App">
       <HeaderComponent id={id} setId={setId}/>
       <ContentComponent id={id} setId={setId}/>
-      
     </div>
   );
 }
