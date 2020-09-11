@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react'
+import React, {useEffect, useState} from 'react'
 
 const ListaFavoritos = ({fav={}}) =>{
 
@@ -8,14 +8,12 @@ const ListaFavoritos = ({fav={}}) =>{
             <ul className="listaFav">
             <h2 className="encabezado">Favoritos</h2>
                 {
-                    useEffect(()=>{
-                        fav.map((datos)=>(
-                            <li>
-                                <span>{datos.name}</span>
-                                <span><i className="fas fa-trash"></i></span>
-                            </li>
-                        ))
-                    },[fav])
+                    fav.map((datos)=>(
+                        <li>
+                            <span>{datos.name}</span>
+                            <span><i className="fas fa-trash"></i></span>
+                        </li>
+                    ))
                 }
             </ul>
         </>

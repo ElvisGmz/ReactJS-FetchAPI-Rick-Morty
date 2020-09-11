@@ -4,7 +4,8 @@ import ListaFavoritos from './favoritos.jsx';
 
 const ContentComponent = ({id={}, setId={}}) => {
     const [personaje, setPersonaje] = useState([]);
-   
+    let fav = localStorage.getItem('rickMorty') === null ? [] : localStorage.getItem('rickMorty')
+
     useEffect(()=>{
         obtenerPersonajes(id)
     }, [id]);
@@ -13,8 +14,6 @@ const ContentComponent = ({id={}, setId={}}) => {
         setId(parseInt(id,10) + 1)
         obtenerPersonajes(parseInt(id,10))
     }
-
-
     function cambiarDown(){
         if(parseInt(id,10) > 1){
             setId(parseInt(id,10) - 1);
@@ -24,6 +23,9 @@ const ContentComponent = ({id={}, setId={}}) => {
         }
     }
 
+    const handleClick = (e) =>{
+        localStorage.setItem('rickMorty', JSON.stringify([{id: personaje.id, name: personaje.name}]))
+    }
     
         const obtenerPersonajes = async (id) => {
             const datos = await fetch('https://rickandmortyapi.com/api/character/' + id)
@@ -53,14 +55,14 @@ const ContentComponent = ({id={}, setId={}}) => {
                     <i className='fas fa-arrow-right'></i>
                 </button>
                 </div>
-                    <i className='far like fa-thumbs-up'></i>
+                    <i onClick={handleClick} className='far like fa-thumbs-up'></i>
             </div>
 
             
             <div className="card mainCard">
                 <h2 className="encabezado">Personajes Principales</h2>
                 <FiveFirst/>
-                {/* <ListaFavoritos fav={fav}/> */}
+                <ListaFavoritos fav={fav}/>
             </div>
 
         </div>
