@@ -1,9 +1,8 @@
 import React, {useEffect, useState} from 'react'
 import  FiveFirst from './FiveFirst.jsx'
 
-const ContentComponent = () => {
+const ContentComponent = ({ id={}, setId={ }}) => {
 
-    const [id, setId] = useState(1);
     const [personaje, setPersonaje] = useState([]);
     
     useEffect(()=>{
@@ -11,18 +10,18 @@ const ContentComponent = () => {
     }, [id]);
 
     function cambiarUp(){
-        setId(id + 1)
-        obtenerPersonajes(id)
+        setId(parseInt(id,10) + 1)
+        obtenerPersonajes(parseInt(id,10))
     }
 
 
-        function cambiarDown(){
-            if(id > 1){
-                setId(id - 1);
-                obtenerPersonajes(id)
-            }else{
-                obtenerPersonajes(id)
-            }
+    function cambiarDown(){
+        if(parseInt(id,10) > 1){
+            setId(parseInt(id,10) - 1);
+            obtenerPersonajes(parseInt(id,10))
+        }else{
+            obtenerPersonajes(parseInt(id,10))
+        }
     }
     
         const obtenerPersonajes = async (id) => {

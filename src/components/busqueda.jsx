@@ -1,80 +1,48 @@
-import React, {Component} from 'react'
+import React, {useEffect, useState} from 'react'
 
+const BarSearch = ({ id={}, setId={ }})=>{
+    const [busqueda, setBusqueda] = useState("")
+    const [items,setItems] = useState([])
 
-class BarSearch extends Component {
-
-    constructor(props){
-        super(props)
-        this.state = {
-            value: '',
-            error: null,
-            isLoaded: false,
-            items: []
-        };
-
-        this.handleChange = this.handleChange.bind(this);
-        this.handleClick = this.handleClick.bind(this);
-    }
-    
-
-
-    handleChange(event){
-        this.setState({value: event.target.value});
-        
-        if (this.state.value.length < 1){
-            document.querySelector('#cuadro').innerHTML = ""
-        }else{
-            fetch(`https://rickandmortyapi.com/api/character/?name=${this.state.value}`)
+    useEffect(()=>{
+        if(busqueda.length>0){
+            fetch(`https://rickandmortyapi.com/api/character/?name=${busqueda}`)
             .then(res=> res.json())
             .then(
-                (result) => {
-                    this.setState({isLoaded: true,
-                                    items: result.results})
-                },
-                (error) => {
-                    this.setState({isLoaded: false,
-                                    error: error})
-                }
-            )
-        }
-    }
+                result => {
+                    if(result.error){
+                        setItems([])
+                    }else{
+                        setItems(result.results)
+                    }
+                });
+            }else{
+                setItems([])
+            }
+    },[busqueda])
+    
+    const handleChange = (e)=> setBusqueda(e.target.value)
 
-    handleClick(event) {
-        alert(event.target.value)
-        event.preventDefault();
-        event.stopPropagation();
+    const handleClick = (e) => {
+        setId(e.target.value)
+        setBusqueda('')
       }
 
-    render(){
-
-
-        // const divBusqueda = document.getElementById('cuadro').style
-
-        // if (this.state.isLoaded === false){
-        //     divBusqueda.style.visibility = 'hidden'
-        // }else{
-        //     divBusqueda.style.visibility = 'visible'
-        // }
-        
-        
-        return(
-            <>
-                <input autoComplete="off" id="txtSearch" onChange={this.handleChange} placeholder="Buscar"></input>
-                <div className="resultadoBusqueda" id="cuadro">
-                    
-                    {
-                          this.state.items.map((resp)=>(
-                              <button key={resp.id} value={resp.id} onClick={this.handleClick}>
-                                  {resp.name}
-                              </button>
-                          ))
-                    }
-                </div>
-            </>
-        );
-    }
+    return(
+        <>
+            <input autoComplete="off" id="txtSearch" onChange={handleChange} value={busqueda} placeholder="Buscar"></input>
+            <div className="resultadoBusqueda" id="cuadro">
+                
+                {
+                      items.map((resp)=>(
+                          <button key={resp.id} value={resp.id} onClick={handleClick}>
+                              {resp.name}
+                          </button>
+                      ))
+                }
+            </div>
+        </>
+    );
 }
-
-
 
 export default BarSearch;
