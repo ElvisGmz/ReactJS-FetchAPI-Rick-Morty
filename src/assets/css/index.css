@@ -4,6 +4,7 @@ body{
 }
 
 .navBar{
+    position: relative;
     background-color: crimson;
     padding: 0.5rem;
     text-align: left;
@@ -13,6 +14,7 @@ body{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 1000;
 }
 
 .navImgLogo{
@@ -22,12 +24,14 @@ body{
 }
 
 .Search{
+    position: relative;
     display: flex;
-    flex-flow: row nowrap;
-    /* background-color: green; */
-    min-width: 300px;
-    width: 300px;
+    flex-flow: column nowrap;
+    padding: 0 10px;
     max-width: 500px;
+    min-width: 300px;
+    width: 30%;
+    align-items: center;
 }
 
 #txtSearch{
@@ -35,14 +39,12 @@ body{
     color: #FFF;
     border: 0;
     border-radius: 5px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
     padding: 0.7rem;
-    min-width: 200px;
-    margin: 0px 0px 0px 10px;
+    min-width: 100%;
+    z-index: 1000;
 }
 
-#btnSearch{
+/* #btnSearch{
     background-color: #424242;
     color: #FFF;
     border: 0;
@@ -51,6 +53,38 @@ body{
     border-bottom-left-radius: 0;
     cursor: pointer;
     width: 40px;
+} */
+
+.resultadoBusqueda{
+    position: absolute;
+    margin: auto;
+    margin-top: 2px;
+    border-radius: 5px;
+    padding: 5px;
+    padding-top: 1.79rem;
+    font-size: 12px;
+    background-color: #FFF;
+    color: #000;
+    width: 90%;
+    z-index: 10;
+}
+
+.resultadoBusqueda button:first-child{
+    margin-top: 15px;
+}
+
+.resultadoBusqueda button{
+    padding: 0.5em;
+    border: 0;
+    border-radius: 3px;
+    color: #FFF;
+    margin: 2px;
+    background-color: crimson;
+    cursor: pointer;
+}
+
+.resultadoBusqueda button:hover{
+    background-color: dodgerblue;
 }
 
 #txtSearch:focus, #btnSearch:focus{
@@ -89,6 +123,11 @@ body{
     justify-content: center;
     justify-items: flex-start;
     align-items: flex-start;
+}
+
+.encabezado{
+    display: block !important;
+    width: 100%;
 }
 
 .card{
@@ -195,6 +234,7 @@ body{
     .container{
         flex-direction: row;
         align-items: flex-start;
+        flex-flow: nowrap;
     }
 
     .mainCard{
@@ -204,13 +244,18 @@ body{
         text-align: center;
     }
 
+    .selectCard{
+        min-width: 250px;
+        max-width: 250px;
+    }
+
     
 }
 
 
-@media only screen and (max-width: 1020px) {
+/* @media only screen and (max-width: 1020px) {
 
-    /* Main */
+    Main 
 
     .container{
         flex-direction: row;
@@ -219,41 +264,43 @@ body{
 
     .mainCard{
         min-width: 300px;
-        max-width: 640px;
+        max-width: 630px;
         background-color: #373737;
         text-align: center;
     }
 
     
-}
+} 
+*/
 
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 625px) {
 
     /* Main */
 
     .container{
-        flex-direction: column-reverse;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-start;
+        flex-wrap: wrap;
     }
 
     .mainCard{
         min-width: 300px;
+        max-width: 425px;
         background-color: #373737;
         text-align: center;
     }
 
-    
-
-.selectCard{
-    min-width: 93vw;
-    max-width: 470px !important;
-    background-color: #0078A7;
-    text-align: center;
-    padding-top: 3rem;
-    overflow: hidden;
-    min-height: 70vh;
-}
+    .selectCard{
+        min-width: 300px !important;
+        width: 90vw;
+        max-width: 425px;
+        background-color: #0078A7;
+        text-align: center;
+        padding-top: 3rem;
+        overflow: hidden;
+        min-height: 70vh;
+    }
     
 }
 
@@ -270,10 +317,34 @@ body{
     margin: 5px;
 }
 
-    .container{
-        flex-direction: column-reverse !important;
-        align-items: center;
-    }
+    
+.container{
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
+
+.mainCard{
+    min-width: 290px;
+    max-width: 425px;
+    background-color: #373737;
+    text-align: center;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.selectCard{
+    min-width: 280px !important;
+    width: 90vw;
+    max-width: 425px;
+    background-color: #0078A7;
+    text-align: center;
+    padding-top: 3rem;
+    overflow: hidden;
+    min-height: 70vh;
+    margin-left: 5px;
+    margin-right: 5px;
+}
 
     .navBar{
         background-color: crimson;
@@ -292,10 +363,11 @@ body{
         display: flex;
         flex-flow: row nowrap;
         /* background-color: green; */
-        min-width: 95vw !important;
+        min-width: 90vw !important;
+        padding: 5px;
         margin: auto;
         justify-content: center;
-        justify-items: center;
+        justify-items: flex-start !important;
     }
 
     #txtSearch{
@@ -303,29 +375,34 @@ body{
         color: #FFF;
         border: 0;
         border-radius: 5px;
-        border-top-right-radius: 0px;
-        border-bottom-right-radius: 0px;
         padding: 0.7rem;
-        min-width: 70%;
+        min-width: 100%;
         margin: 0px 0px 0px 0px;
     }
     
 
     /* Main */
-    .mainCard{
-        min-width: 280px;
-        background-color: #373737;
-        text-align: center;
+
+    .resultadoBusqueda{
+        position: absolute;
+        margin: auto;
+        top: 30px !important;
+        justify-self: flex-start;
+        border-radius: 5px;
+        padding: 10px;
+        padding-top: 0.2rem;
+        font-size: 12px;
+        background-color: #FFF;
+        color: #000;
+        width: 90%;
+        z-index: 0;
+        text-align: left;
     }
 
-    .selectCard{
-        min-width: 87vw;
-        max-width: 280px;
-        background-color: #0078A7;
-        text-align: center;
-        padding-top: 3rem;
-        overflow: hidden;
-        min-height: 70vh;
+    .resultadoBusqueda button:first-child{
+        margin-top: 18px;
     }
+    
+    
     
 }

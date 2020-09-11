@@ -26,11 +26,10 @@ const ContentComponent = () => {
     }
     
         const obtenerPersonajes = async (id) => {
-        
-        const datos = await fetch('https://rickandmortyapi.com/api/character/' + id)
-        const datosPersonaje = await datos.json()
-        setPersonaje(datosPersonaje)
-    }
+            const datos = await fetch('https://rickandmortyapi.com/api/character/' + id)
+            const datosPersonaje = await datos.json()
+            setPersonaje(datosPersonaje)
+        }
 
 
 
@@ -38,10 +37,6 @@ const ContentComponent = () => {
     return(
         <>
         <div className="container">           
-            <div className="card mainCard">
-                <FiveFirst/>
-            </div>
-        
             <div className="card selectCard">
                 <img src={personaje.image} alt=""></img>
                 <h1>{personaje.name}</h1>
@@ -60,6 +55,12 @@ const ContentComponent = () => {
                 </button>
                 </div>
                     <i className='far like fa-thumbs-up'></i>
+            </div>
+
+            
+            <div className="card mainCard">
+                <h2 className="encabezado">Personajes Principales</h2>
+                <FiveFirst/>
             </div>
 
         </div>

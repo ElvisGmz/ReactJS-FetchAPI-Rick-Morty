@@ -1,0 +1,3 @@
+[0910/145412.549:ERROR:minidumpwritedump_with_crashpad_info.cc(452)] Failed to call MiniDumpWriteDump: No hay suficientes recursos de memoria disponibles para completar esta operación. (0x8007000E)
+[0910/145412.554:ERROR:minidumpwritedump_with_crashpad_info.cc(661)] Failed to write minidump file
+[0910/145412.554:ERROR:crash_report_exception_handler.cc(132)] TryMiniDumpWriteDumpWithCrashpadInfo failed
