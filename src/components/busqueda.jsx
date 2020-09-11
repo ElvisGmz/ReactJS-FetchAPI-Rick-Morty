@@ -25,7 +25,7 @@ const BarSearch = ({ id={}, setId={ }})=>{
 
     const handleClick = (e) => {
         setId(e.target.value)
-        setBusqueda = ''
+        setBusqueda('')
       }
 
     return(
