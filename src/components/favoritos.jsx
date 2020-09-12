@@ -1,17 +1,20 @@
 import React from 'react'
 
-const ListaFavoritos = ({fav={}}) =>{
+const ListaFavoritos = ({favoritos=[], setFavoritos={}}) =>{
 
-
+    const eliminarFavorito = (e)=>{
+        const id = parseInt(e.target.getAttribute('data-id'))
+        setFavoritos(favoritos.filter(fav => fav.id !== id))
+    }
     return(
             <>
             <ul className="listaFav">
-            {fav.length < 1 ? console.log('') : (<h2 className="encabezado">Favoritos</h2>)}
+            {favoritos.length < 1 ? console.log('') : (<h2 className="encabezado">Favoritos</h2>)}
                 {
-                    fav === null ? console.log('no hay fav') : fav.map((datos)=>(
+                    favoritos.map((datos)=>(
                         <li key={datos.id}>
                             <span>{datos.name}</span>
-                            <span><i className="fas fa-trash"></i></span>
+                            <span><i className="fas fa-trash" data-id={datos.id} onClick={eliminarFavorito}></i></span>
                         </li>
                     ))
                 }

@@ -5,15 +5,19 @@ import ListaFavoritos from './favoritos.jsx';
 const ContentComponent = ({id={}, setId={}}) => {
 
     const [personaje, setPersonaje] = useState([]);
+    const [favoritos, setFavoritos] = useState([])
 
-    let datoss = []
-    let fav = '';
-    if(localStorage.getItem('rickMorty') === null){
-        localStorage.setItem('rickMorty', JSON.stringify(datoss))
-        fav = localStorage.getItem('rickMorty')
-    }else{
-        fav = localStorage.getItem('rickMorty')
-    } 
+    
+useEffect(()=>{
+    if(localStorage.getItem('rickMorty') !== null){
+
+        setFavoritos(JSON.parse(localStorage.getItem('rickMorty')))
+    
+    }
+    },[]);
+    useEffect(()=>{
+            localStorage.setItem('rickMorty', JSON.stringify(favoritos))
+    },[favoritos])
 
     useEffect(()=>{
         obtenerPersonajes(id)
@@ -33,8 +37,12 @@ const ContentComponent = ({id={}, setId={}}) => {
     }
 
     const handleClick = (e) =>{
-        datoss.push({"id": personaje.id, "name": personaje.name})
-        localStorage.setItem('rickMorty', JSON.stringify(datoss))
+        let datos = favoritos.filter(fav=>fav.id===personaje.id);
+        if(datos.length===0 && favoritos.length <5){
+            setFavoritos([...favoritos,{"id": personaje.id, "name": personaje.name}])
+        }else{
+            alert('Solo puedes agregar 5 favoritos')
+        }
     }
     
         const obtenerPersonajes = async (id) => {
@@ -72,7 +80,7 @@ const ContentComponent = ({id={}, setId={}}) => {
             <div className="card mainCard">
                 <h2 className="encabezado">Personajes Principales</h2>
                 <FiveFirst/>
-                <ListaFavoritos fav={JSON.parse(fav)}/>
+                <ListaFavoritos favoritos={favoritos} setFavoritos={setFavoritos}/>
             </div>
 
         </div>
