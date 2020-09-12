@@ -38,10 +38,10 @@ useEffect(()=>{
 
     const handleClick = (e) =>{
         let datos = favoritos.filter(fav=>fav.id===personaje.id);
-        if(datos.length===0 && favoritos.length <5){
+        if(datos.length===0 && favoritos.length < 5){
             setFavoritos([...favoritos,{"id": personaje.id, "name": personaje.name}])
         }else{
-            alert('Solo puedes agregar 5 favoritos')
+            alert('No puedes agregar dos veces el mismo personaje y maximo cinco favoritos.')
         }
     }
     
