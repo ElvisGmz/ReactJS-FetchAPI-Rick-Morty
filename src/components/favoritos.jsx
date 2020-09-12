@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react'
+import React from 'react'
 
 const ListaFavoritos = ({fav={}}) =>{
 
@@ -6,10 +6,10 @@ const ListaFavoritos = ({fav={}}) =>{
     return(
             <>
             <ul className="listaFav">
-            <h2 className="encabezado">Favoritos</h2>
+            {fav.length < 1 ? console.log('') : (<h2 className="encabezado">Favoritos</h2>)}
                 {
-                    fav.map((datos)=>(
-                        <li>
+                    fav === null ? console.log('no hay fav') : fav.map((datos)=>(
+                        <li key={datos.id}>
                             <span>{datos.name}</span>
                             <span><i className="fas fa-trash"></i></span>
                         </li>

@@ -3,8 +3,17 @@ import  FiveFirst from './FiveFirst.jsx'
 import ListaFavoritos from './favoritos.jsx';
 
 const ContentComponent = ({id={}, setId={}}) => {
+
     const [personaje, setPersonaje] = useState([]);
-    let fav = localStorage.getItem('rickMorty') === null ? [] : localStorage.getItem('rickMorty')
+
+    let datoss = []
+    let fav = '';
+    if(localStorage.getItem('rickMorty') === null){
+        localStorage.setItem('rickMorty', JSON.stringify(datoss))
+        fav = localStorage.getItem('rickMorty')
+    }else{
+        fav = localStorage.getItem('rickMorty')
+    } 
 
     useEffect(()=>{
         obtenerPersonajes(id)
@@ -24,7 +33,8 @@ const ContentComponent = ({id={}, setId={}}) => {
     }
 
     const handleClick = (e) =>{
-        localStorage.setItem('rickMorty', JSON.stringify([{id: personaje.id, name: personaje.name}]))
+        datoss.push({"id": personaje.id, "name": personaje.name})
+        localStorage.setItem('rickMorty', JSON.stringify(datoss))
     }
     
         const obtenerPersonajes = async (id) => {
@@ -62,7 +72,7 @@ const ContentComponent = ({id={}, setId={}}) => {
             <div className="card mainCard">
                 <h2 className="encabezado">Personajes Principales</h2>
                 <FiveFirst/>
-                <ListaFavoritos fav={fav}/>
+                <ListaFavoritos fav={JSON.parse(fav)}/>
             </div>
 
         </div>
