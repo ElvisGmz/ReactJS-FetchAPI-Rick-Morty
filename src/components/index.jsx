@@ -1,11 +1,9 @@
 import axios from "axios";
 
-const baseUrl = process.env.REACT_APP_BASE_URL;
-
 export async function getCaracters() {
   try {
     const response = await axios({
-      url: `${baseUrl}`,
+      url: `${process.env.REACT_APP_API_URL}/character/`,
       method: "GET",
     });
     return response;

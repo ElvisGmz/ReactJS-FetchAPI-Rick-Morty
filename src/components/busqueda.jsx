@@ -6,7 +6,7 @@ const BarSearch = ({ id = {}, setId = {} }) => {
 
   useEffect(() => {
     if (busqueda.length > 0) {
-      fetch(`https://rickandmortyapi.com/api/character/?name=${busqueda}`)
+      fetch(`${process.env.REACT_APP_API_URL}/character/?name=${busqueda}`)
         .then((res) => res.json())
         .then((result) => {
           if (result.error) {
