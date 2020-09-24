@@ -44,9 +44,7 @@ const ContentComponent = ({ id = {}, setId = {} }) => {
   };
 
   const obtenerPersonajes = async (id) => {
-    const datos = await fetch(
-      "https://rickandmortyapi.com/api/character/" + id
-    );
+    const datos = await fetch(`${process.env.REACT_APP_API_URL}/character/${id}`);
     const datosPersonaje = await datos.json();
     setPersonaje(datosPersonaje);
   };
